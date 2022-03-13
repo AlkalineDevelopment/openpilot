@@ -106,7 +106,7 @@ class CarInterface(CarInterfaceBase):
         # stock filter output values:     0x009F, 0x0108, 0x0108, 0x0108, 0x0108, 0x0108, 0x0108, 0x0108, 0x0108
         # modified filter output values:  0x009F, 0x0108, 0x0108, 0x0108, 0x0108, 0x0108, 0x0108, 0x0400, 0x0480
         # note: max request allowed is 4096, but request is capped at 3840 in firmware, so modifications result in 2x max
-        ret.lateralParams.torqueBP, ret.lateralParams.torqueV = [[0x0, 0x917, 0xDC5, 0x1017, 0x119F, 0x140B, 0x1680, 0x2D00, 0x3840], [0x0, 0x200, 0x300, 0x478, 0x5EC, 0x800, 0xA00, 0xE00, 0xF00]]		
+        ret.lateralParams.torqueBP, ret.lateralParams.torqueV = [[0, 2560, 9600], [0, 2560, 3840]]		
         ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.3], [0.1]]
       else:
         ret.lateralParams.torqueBP, ret.lateralParams.torqueV = [[0, 2560], [0, 2560]]
@@ -120,7 +120,7 @@ class CarInterface(CarInterfaceBase):
       ret.centerToFront = CivicParams.CENTER_TO_FRONT
       ret.steerRatio = 15.38  # 10.93 is end-to-end spec
       if eps_modified:
-        ret.lateralParams.torqueBP, ret.lateralParams.torqueV = [[0x0, 0x917, 0xDC5, 0x1017, 0x119F, 0x140B, 0x1680, 0x2D00, 0x3840], [0x0, 0x200, 0x300, 0x478, 0x5EC, 0x800, 0xA00, 0xE00, 0xF00]]		
+        ret.lateralParams.torqueBP, ret.lateralParams.torqueV = [[0, 2560, 9600], [0, 2560, 3840]]		
         ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.4], [0.12]]
       else:
         ret.lateralParams.torqueBP, ret.lateralParams.torqueV = [[0, 4096], [0, 4096]]  # TODO: determine if there is a dead zone at the top end
